@@ -11,8 +11,10 @@ exports.getAllPerson = async (req, res) => {
   }
 };
 
-// async function disco() {
-//   await pool.query("SELECT * FROM person");
-// }
+async function disco(req, res) {
+  console.log("DisPlaY");
+  let see = await pool.query("SELECT * FROM person ORDER BY id ASC");
+  res.json(see.rows);
+}
 
-// disco();
+module.exports = disco;

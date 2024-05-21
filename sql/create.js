@@ -18,14 +18,16 @@ exports.createPerson = async (req, res) => {
   }
 };
 
-export default async function isnert(req, res) {
-  let firstName = req.body.first_name;
-  let lastName = req.body.last_name;
-  let Email = req.body.email;
-  let Gender = req.body.gender;
-  await pool.query(
-    `INSERT INTO person (first_name, last_name, email, gender) VALUES (${
-      (firstName, lastName, Email, Gender)
-    }) RETURNING * `
+async function isnert(req, res) {
+  let {
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    gender: gender,
+  } = req.body;
+  let table = await pool.query(
+    `INSERT INTO person (first_name, last_name, email, gender) VALUES ('${first_name}','${last_name}','${email}','${gender}') RETURNING * `
   );
 }
+
+module.exports = isnert;

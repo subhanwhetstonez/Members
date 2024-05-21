@@ -12,3 +12,14 @@ exports.getOnePerson = async (req, res) => {
     console.error(err.message);
   }
 };
+
+async function Onep(req, res) {
+  const personId = req.params.id;
+  console.log(personId);
+  let personBack = await pool.query(
+    `SELECT * FROM person WHERE id = ${personId}`
+  );
+  res.json(personBack.rows);
+}
+
+module.exports = Onep;

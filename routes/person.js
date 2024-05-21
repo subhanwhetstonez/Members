@@ -4,7 +4,7 @@ const create = require("../sql/create");
 const display = require("../sql/display");
 const specific = require("../sql/specific");
 const update = require("../sql/update");
-const del = require("../sql/del");
+//const del = require("../sql/del");
 
 router.use(function (req, res, next) {
   console.log(req.url, "@", Date.now());
@@ -19,13 +19,12 @@ router.use(function (req, res, next) {
 //   res.send("hi get /person");
 // });
 
-router.route("/").get(display.getAllPerson).post(create.isnert());
+router.route("/").get(display).post(create);
 
-router
-  .route("/:id")
-  .get(specific.getOnePerson)
-  .put(update.updateOnePerson)
-  .delete(del.deleteOnePerson);
+router.route("/:id").get(specific); //.put(update)
+//.delete(del);
+
+router.route("/:id").put(update);
 
 // router.post("/person", create.createPerson);
 

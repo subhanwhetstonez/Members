@@ -13,3 +13,12 @@ exports.deleteOnePerson = async (req, res) => {
     console.error(err.message);
   }
 };
+
+async function dele(req, res) {
+  let personId = req.params.id;
+  await pool
+    .query(`DELETE FROM person WHERE id = ${personId}`)
+    .then(res.json("Person has been deleted"));
+}
+
+module.exports = dele;
