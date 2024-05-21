@@ -19,7 +19,7 @@ router.use(function (req, res, next) {
 //   res.send("hi get /person");
 // });
 
-router.route("/").get(display.getAllPerson).post(create.createPerson);
+router.route("/").get(display.getAllPerson).post(create.isnert());
 
 router
   .route("/:id")
